@@ -26,3 +26,9 @@ button.addEventListener("click", function () {
   counter++;
   counterDisplay.innerHTML = `You have saved ${counter} shrimps`;
 });
+
+// increment shrimps every second on top of user-generated ones
+setInterval(function () {
+  counter++;
+  counterDisplay.innerHTML = `You have saved ${counter} shrimps`;
+}, 1000);
