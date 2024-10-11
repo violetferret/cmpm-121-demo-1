@@ -34,28 +34,45 @@ interface upgrade {
   rateIncrease: number;
   amountPurchased: number;
   button?: HTMLButtonElement;
+  description: string;
 }
 
-const upgradeButtons : upgrade[] = [
+const upgradeButtons: upgrade[] = [
   {
     name: "Open a Shrimp Savings Account",
     cost: 10,
     rateIncrease: 0.1,
     amountPurchased: 0,
+    description: "Start gaining interest on your shrimps!",
   },
-  
   {
     name: "Start a Shrimp Roth IRA",
     cost: 100,
     rateIncrease: 2,
     amountPurchased: 0,
+    description: "In ~40 years, your shrimps will be tax-free!",
   },
   {
-    name: "Invest in a Shrimp Stock Portfolio",
+    name: "Invest in the Shrimp Stock Market",
     cost: 1000,
     rateIncrease: 50,
     amountPurchased: 0,
-  }
+    description: "Sink your money into some promising shrimp shares!",
+  },
+  {
+    name: "Diversify your Shrimp Stock Portfolio",
+    cost: 10000,
+    rateIncrease: 100,
+    amountPurchased: 0,
+    description: "Time to start looking at other lucrative shrimp stocks...",
+  },
+  {
+    name: "Start a Shrimp Venture Capital Fund",
+    cost: 100000,
+    rateIncrease: 250,
+    amountPurchased: 0,
+    description: "Invest in the next generation of shrimp industry!",
+  },
 ];
 
 // set initial growth rate
@@ -70,7 +87,9 @@ for (const upgrade of upgradeButtons) {
   const button = document.createElement("button");
   button.innerHTML =
     upgrade.name +
-    `<small><br>${upgrade.cost.toFixed(2)} shrimps<br>${upgrade.amountPurchased} purchased</small>`;
+    `<small><br>${upgrade.cost.toFixed(2)} shrimps<br>${upgrade.amountPurchased} purchased<br><i>` +
+    upgrade.description +
+    `</i></small>`;
   app.append(button);
   upgrade.button = button;
   button.disabled = true;
@@ -84,7 +103,9 @@ for (const upgrade of upgradeButtons) {
     upgrade.amountPurchased++;
     button.innerHTML =
       upgrade.name +
-      `<small><br>${upgrade.cost.toFixed(2)} shrimps<br>${upgrade.amountPurchased} purchased</small>`;
+      `<small><br>${upgrade.cost.toFixed(2)} shrimps<br>${upgrade.amountPurchased} purchased<br><i>` +
+      upgrade.description +
+      `</i></small>`;
   });
 }
 
