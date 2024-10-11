@@ -18,13 +18,13 @@ app.append(shrimpButton);
 // add counter display
 let counter: number = 0;
 const counterDisplay = document.createElement("h2");
-counterDisplay.innerHTML = `You have saved ${counter} shrimps`;
+counterDisplay.innerHTML = `You have saved ${counter.toFixed(0)} shrimps`;
 app.append(counterDisplay);
 
 // create button clicking event
 shrimpButton.addEventListener("click", function () {
   counter++;
-  counterDisplay.innerHTML = `You have saved ${counter} shrimps`;
+  counterDisplay.innerHTML = `You have saved ${counter.toFixed(0)} shrimps`;
 });
 
 // create upgrade buttons
@@ -63,7 +63,7 @@ const upgradeButtons = [upgrade1, upgrade2, upgrade3];
 let growthRate: number = 1;
 
 const growthRateDisplay = document.createElement("h3");
-growthRateDisplay.innerHTML = `${growthRate} shrimps per second`;
+growthRateDisplay.innerHTML = `${growthRate.toFixed(1)} shrimps per second`;
 app.append(growthRateDisplay);
 
 // set up html elements of upgrade buttons
@@ -71,7 +71,7 @@ for (const upgrade of upgradeButtons) {
   const button = document.createElement("button");
   button.innerHTML =
     upgrade.name +
-    `<small><br>${upgrade.cost} shrimps<br>${upgrade.amountPurchased} purchased</small>`;
+    `<small><br>${upgrade.cost.toFixed(2)} shrimps<br>${upgrade.amountPurchased} purchased</small>`;
   app.append(button);
   upgrade.button = button;
   button.disabled = true;
@@ -79,12 +79,13 @@ for (const upgrade of upgradeButtons) {
   // increase growth rate/decrease currency with upgrades
   button.addEventListener("click", function () {
     counter -= upgrade.cost;
+    upgrade.cost *= 1.15;
     growthRate += upgrade.rateIncrease;
     growthRateDisplay.innerHTML = `${growthRate.toFixed(1)} shrimps per second`;
     upgrade.amountPurchased++;
     button.innerHTML =
       upgrade.name +
-      `<small><br>${upgrade.cost} shrimps<br>${upgrade.amountPurchased} purchased</small>`;
+      `<small><br>${upgrade.cost.toFixed(2)} shrimps<br>${upgrade.amountPurchased} purchased</small>`;
   });
 }
 
@@ -101,7 +102,7 @@ function step(timestamp: number) {
 
   if ((elapsed / 1000) * growthRate >= 1) {
     counter++;
-    counterDisplay.innerHTML = `You have saved ${counter} shrimps`;
+    counterDisplay.innerHTML = `You have saved ${counter.toFixed(0)} shrimps`;
     start = timestamp;
   }
 
