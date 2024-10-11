@@ -36,28 +36,27 @@ interface upgrade {
   button?: HTMLButtonElement;
 }
 
-const upgrade1: upgrade = {
-  name: "Open a Shrimp Savings Account",
-  cost: 10,
-  rateIncrease: 0.1,
-  amountPurchased: 0,
-};
-
-const upgrade2: upgrade = {
-  name: "Start a Shrimp Roth IRA",
-  cost: 100,
-  rateIncrease: 2,
-  amountPurchased: 0,
-};
-
-const upgrade3: upgrade = {
-  name: "Invest in a Shrimp Stock Portfolio",
-  cost: 1000,
-  rateIncrease: 50,
-  amountPurchased: 0,
-};
-
-const upgradeButtons = [upgrade1, upgrade2, upgrade3];
+const upgradeButtons : upgrade[] = [
+  {
+    name: "Open a Shrimp Savings Account",
+    cost: 10,
+    rateIncrease: 0.1,
+    amountPurchased: 0,
+  },
+  
+  {
+    name: "Start a Shrimp Roth IRA",
+    cost: 100,
+    rateIncrease: 2,
+    amountPurchased: 0,
+  },
+  {
+    name: "Invest in a Shrimp Stock Portfolio",
+    cost: 1000,
+    rateIncrease: 50,
+    amountPurchased: 0,
+  }
+];
 
 // set initial growth rate
 let growthRate: number = 1;
